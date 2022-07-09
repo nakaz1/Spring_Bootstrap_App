@@ -28,7 +28,7 @@ public class DefaultUser {
 
 
         User user1 = new User();
-        user1.setAge(32);
+        user1.setAge(2);
         user1.setName("test");
         user1.setCar("testcar");
         user1.setUsername("a");
@@ -39,8 +39,8 @@ public class DefaultUser {
 
         User user2 = new User();
         user2.setName("user");
-        user2.setCar("user");
-        user2.setAge(28);
+        user2.setCar("car");
+        user2.setAge(1);
         user2.setUsername("user");
         user2.setPassword("user");
         user2.addRole(role2);

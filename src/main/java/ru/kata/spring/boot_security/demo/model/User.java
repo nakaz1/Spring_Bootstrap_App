@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.model;
 
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -7,7 +8,11 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-
+@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -45,26 +50,7 @@ public class User implements UserDetails {
         roles.add(role);
     }
 
-    public User() {
-    }
 
-    public User(String name, int age, String car, String username, String password, Set<Role> roles) {
-        this.name = name;
-        this.age = age;
-        this.car = car;
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
-    }
-    public User(String name, int age, String car, String username, String password) {
-        this.name = name;
-        this.age = age;
-        this.car = car;
-        this.username = username;
-        this.password = password;
-    }
-
-    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
@@ -92,75 +78,8 @@ public class User implements UserDetails {
 
 
 
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getCar() {
-        return this.car;
-    }
-
-    public void setCar(String car) {
-        this.car = car;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<Role> getRoles() {
-        return this.roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 
 
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", age='" + getAge() + "'" +
-            ", car='" + getCar() + "'" +
-            ", username='" + getUsername() + "'" +
-            ", password='" + getPassword() + "'" +
-            ", roles='" + getRoles() + "'" +
-            "}";
-    }
 
 
 

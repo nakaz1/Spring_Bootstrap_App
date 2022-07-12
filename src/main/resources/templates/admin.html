@@ -68,7 +68,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Car</th>
+                                    <th>Last Name</th>
                                     <th>Age</th>
                                     <th>Role</th>
                                     <th>Edit</th>
@@ -79,7 +79,7 @@
                                 <tr th:each="user : ${users}">
                                     <td th:text="${user.id}"></td>
                                     <td th:text="${user.name}"></td>
-                                    <td th:text="${user.car}"></td>
+                                    <td th:text="${user.lastName}"></td>
                                     <td th:text="${user.age}"></td>
                                     <td><a th:each="role : ${user.getRoles()}" th:text="${role.name} + ' '"></a></td>
 
@@ -115,9 +115,9 @@
                                                                            required minlength="1" maxlength="50">
                                                                     <br/>
 
-                                                                    <strong><label for="eCar">Car</label></strong>
+                                                                    <strong><label for="eLastName">Last name</label></strong>
                                                                     <input type="text" class="form-control"
-                                                                           th:value="${user.car}" id="eCar"
+                                                                           th:value="${user.lastName}" id="eLastName"
                                                                            name="surname"
                                                                            required minlength="1" maxlength="50">
                                                                     <br/>
@@ -201,10 +201,10 @@
                                                                                name="name" readonly>
                                                                         <br/>
 
-                                                                        <strong><label for="dCar">Car</label></strong>
+                                                                        <strong><label for="dLastname">Last name</label></strong>
                                                                         <br/>
                                                                         <input type="text" class="form-control"
-                                                                               th:value="${user.car}" id="dCar"
+                                                                               th:value="${user.lastName}" id="dLastname"
                                                                                name="car" readonly>
                                                                         <br/>
 
@@ -273,10 +273,10 @@
                                         <input type="text" class="form-control" th:field="*{name}" id="aFirst name"
                                                placeholder="Name" required minlength="1" maxlength="50">
 
-                                        <strong><label for="aCar">Car</label></strong>
+                                        <strong><label for="aLastname">Last name</label></strong>
                                         <br/>
-                                        <input type="text" class="form-control" th:field="*{car}" id="aCar"
-                                               placeholder="Car" required minlength="1" maxlength="50">
+                                        <input type="text" class="form-control" th:field="*{lastName}" id="aLastname"
+                                               placeholder="Last name" required minlength="1" maxlength="50">
 
                                         <strong><label for="aAge">Age</label></strong>
                                         <br/>

@@ -13,11 +13,14 @@ import ru.kata.spring.boot_security.demo.model.*;
 @Component
 public class DefaultUser {
     
-    @Autowired 
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private RoleService roleService;
+    private final RoleService roleService;
+
+    public DefaultUser(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
 
     @PostConstruct
     private void initialize(){
@@ -30,7 +33,7 @@ public class DefaultUser {
         User user1 = new User();
         user1.setAge(2);
         user1.setName("test");
-        user1.setCar("testcar");
+        user1.setLastName("lastnameTest");
         user1.setUsername("a");
         user1.setPassword("a");
 
@@ -39,7 +42,7 @@ public class DefaultUser {
 
         User user2 = new User();
         user2.setName("user");
-        user2.setCar("car");
+        user2.setLastName("lastnameUser");
         user2.setAge(1);
         user2.setUsername("user");
         user2.setPassword("user");

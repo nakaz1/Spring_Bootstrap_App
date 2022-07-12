@@ -1,14 +1,18 @@
 package ru.kata.spring.boot_security.demo.model;
 
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.validation.constraints.Min;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-@Data
+
+@ToString
 @Setter
 @Getter
 @AllArgsConstructor
@@ -19,21 +23,24 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "age")
+    @Column(name = "age", nullable = false)
+    @Min(value = 0, message = "Только положительное значение")
     private int age;
 
-    @Column(name = "car")
-    private String car;
+    @Column(name = "lastname", nullable = false)
+    private String lastName;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username", unique = true, nullable = false)
+
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
+    @Size(min=2, message = "Введите не менее 2ух знаков")
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -75,13 +82,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-
-
-
-
-
-
 
 
 }

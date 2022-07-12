@@ -14,11 +14,14 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public UserServiceImpl(UserDao userDao, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userDao = userDao;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     @Transactional
@@ -41,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public void delete(long id) {
         userDao.delete(id);
     }
 
